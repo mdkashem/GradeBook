@@ -1,0 +1,110 @@
+<div class="col-lg-offset-1 col-lg-10">
+
+	<!--Header for view type-->
+	<div class="row">                
+		<div class="col-lg-6">
+			<h2>Current {{viewType}}</h2>
+			<hr/>
+		</div>
+	</div>
+	<!--End header-->
+
+	<div class="panel panel-default" ng-repeat="course in courseData">
+		<div class="panel-heading">
+			<h3 class="panel-title">
+				{{course.name}}<apan class="pull-right">{{course.courseNum}}</span>
+			</h3>
+		</div>		
+		<div class="panel-body">
+			<div class="accordion" id="courseStudentAccordion{{course._id}}">
+				<div class="accordion-group">
+					<div class="accordion-heading">
+						<a class="accordion-toggle" data-toggle="collapse" data-parent="courseStudentAccordion{{course._id}}" href="#courseStudentCollapse{{course._id}}">
+							Students : {{course.students.length}}
+						</a>
+					</div>
+					<div id="courseStudentCollapse{{course._id}}" class="accordion-body collapse">
+						<div class="accordion-inner">
+							<table class="table table-striped">
+								<thead>
+									<tr>
+										<th>Name</th>
+										<th>Email</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr ng-repeat="student in course.students">
+										<td>{{student.firstName + " " + student.lastName}}</td>
+										<td>{{student.email}}</td>								
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="accordion" id="courseEntryAccordion{{course._id}}">
+				<div class="accordion-group">
+					<div class="accordion-heading">
+						<a class="accordion-toggle" data-toggle="collapse" data-parent="courseEntryAccordion{{course._id}}" href="#courseEntryCollapse{{course._id}}">
+							Assignments : {{course.assignments.length}}
+						</a>
+					</div>
+					<div id="courseEntryCollapse{{course._id}}" class="accordion-body collapse">
+						<div class="accordion-inner">
+							<table class="table table-striped">
+								<thead>
+									<tr>
+										<th>Name</th>
+										<th>Description</th>
+										<th>Points</th>
+										<th>Comments</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr ng-repeat="assignment in course.assignments">
+										<td>{{assignment.name}}</td>
+										<td>{{assignment.description}}</td>
+										<td>{{assignment.maxPoints}}</td>
+										<td>
+											<ul ng-repeat="comment in assignment.comments">
+												<li>{{comment}}</li>
+											</ul>
+										</td>								
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="accordion" id="courseCommentAccordion{{course._id}}">
+				<div class="accordion-group">
+					<div class="accordion-heading">
+						<a class="accordion-toggle" data-toggle="collapse" data-parent="courseCommentAccordion{{course._id}}" href="#courseCommentCollapse{{course._id}}">
+							Comments : {{course.comments.length}}
+						</a>
+					</div>
+					<div id="courseCommentCollapse{{course._id}}" class="accordion-body collapse">
+						<div class="accordion-inner">
+							<ul class="list-group">
+							  <li class="list-group-item" ng-repeat="comment in course.comments">
+							    <span class="badge">Nate</span>
+							    {{comment}}
+							  </li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="pull-right">
+				<a ui-sref="coursesDetail({course_id:(course._id)})"><button type="button" class="btn btn-theme" >Edit</button></a>
+				<button type="button" class="btn btn-theme04" ng-click="remove(course._id)">Delete</button>
+			</div>
+		</div>
+	</div>	
+
+	<div>
+		<a ui-sref="courseCreate"><button type="button" class="btn btn-theme">Create New</button></a>
+	</div>
+</div>

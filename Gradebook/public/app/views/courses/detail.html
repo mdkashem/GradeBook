@@ -1,0 +1,56 @@
+<div class="col-lg-offset-1 col-lg-10">
+
+	<!--Header for view type-->
+	<h1>{{viewType}}</h1>
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3 class="panel-title">{{course.name}}</h3>
+		</div>
+		<div class="panel-body">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>CRN</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>{{course.name}}</td>
+						<td>{{course.courseNum}}</td>
+					</tr>
+				</tbody>
+			</table>
+			<table class="table">
+				<caption><h4>Students</h4></caption>
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Email</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="student in course.students">
+						<td>{{student.firstName + " " + student.lastName}}</td>
+						<td>{{student.email}}</td>
+					</tr>
+				</tbody>
+			</table>
+			<input type="button" class="btn btn-theme" value="Edit Students">
+			<table class="table">
+				<caption><h4>Assignments</h4></caption>
+				<thead>
+					<tr>
+						<td>Name</td>
+						<td>Points</td>
+					</tr>
+					<tr ng-repeat="assignment in course.assignments">
+						<td>{{assignment.name}}</td>
+						<td>{{assignment.maxPoints}}</td>
+					</tr>
+				</thead>
+			</table>
+			<input type="button" class="btn btn-theme" value="Edit Assignments">
+		</div>
+	</div>
+</div>

@@ -1,0 +1,86 @@
+<div class="col-lg-offset-1 col-lg-10">
+
+	<!--Header for view type-->
+	<div class="row">                
+		<div class="col-lg-6">
+			<h2>{{viewName}}</h2>
+			<hr/>
+		</div>
+	</div>
+	<!--End header-->
+
+	<!--Begin student create form-->
+	<form class="form-horizontal" role="form">
+		<div class="form-group">
+			<label for="name" class="col-sm-2 control-label">Name</label>
+			<div class="col-sm-10">
+				<input type="text" id="name" class="form-control" placeholder="Enter Assignment Name" ng-model="assignmentInfo.name">
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="description" class="col-sm-2 control-label">Description</label>
+			<div class="col-sm-10">
+				<input type="text" id="description" class="form-control"placeholder="Enter Description" ng-model="assignmentInfo.description">
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="maxPoints" class="col-sm-2 control-label">Points</label>
+			<div class="col-sm-10">
+				<input type="text" id="maxPoints" class="form-control"placeholder="Enter Possible Points" ng-model="assignmentInfo.maxPoints">
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="comments" class="col-sm-2 control-label">Comments</label>
+			<div class="col-sm-10">
+				<textarea class="form-control" id="comments" rows="3" placeholder="Enter Comments" ng-model="assignmentInfo.comments"></textarea>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label for="course" class="col-sm-2 contol-label">Select Course</label>
+			<div class="col-sm-10">				
+				<select class="form-control" id="course" ng-model="assignmentInfo.course">
+					<option></option>
+					<option value="{{course._id}}" ng-repeat="course in courses">{{course.name}}</option>
+				</select>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<div class="col-sm-offset-2 col-sm-10">
+				<button type="submit" class="btn btn-theme" ng-click="postData()">Submit</button>
+				<button type="button" class="btn btn-theme04" ng-click="cancel()">Cancel</button>
+			</div>
+		</div>
+	</form>	
+	<!--End student create form-->
+
+	<br/>
+	<br/>
+	<!--Validation alerts-->
+	<span ng-show="nameRequired">
+		<div class="alert alert-danger">{{nameRequired}}</div>
+	</span>
+	<span ng-show="failed">
+		<div class="alert alert-danger">{{failed}}</div>
+	</span>
+	
+	<!--Testing Angular bindings
+	<table class="table table-striped">
+		<caption>Bindings:</caption>
+		<thead>
+			<tr>
+				<th>Course Name</th>
+				<th>Course Number</th>
+				<th>Comments</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>{{courseInfo.name}}</td>
+				<td>{{courseInfo.courseNum}}</td>
+				<td>{{courseInfo.comments}}</td>
+			</tr>
+		</tbody>
+	</table>-->
+</div>

@@ -1,0 +1,280 @@
+<div>
+	<div class="row">
+
+		<!--Welcome dashboard view-->
+		<div class="col-lg-12" id="dashboardView">
+			<h1 id="currentSemesterHeading">Welcome to Spring 2015</h1>
+			<hr/>
+
+			<!--Welcome overview-->
+			<div class="row">                
+				<div class="col-lg-12">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title">Current Courses</h3>
+						</div>
+						<div class="panel-body">
+							<div class="col-lg-6">
+								<table class="table table-hover">
+									<caption><h4>Courses: {{courseCount}}</h4></caption>
+									<thead>
+										<tr>
+											<th>Name</th>
+											<th>Students</th>
+											<th>Assignments</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr ng-repeat="course in courseData">
+											<td><a ui-sref="coursesDetail({course_id: (course._id)})">{{course.name}}</a></td>
+											<td>{{course.students.length}}</td>
+											<td>{{course.assignments.length}}</td>
+										</tr>
+									</a>
+								</tbody>
+							</table>
+						</div>
+						<div class="col-lg-6">
+							<div id="studentChart"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">                
+				<div class="col-lg-12">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title">Current Assignments</h3>
+						</div>
+						<div class="panel-body">
+							<div class="col-lg-6">
+								<table class="table table-hover">
+									<caption><h4>Assignments: {{assignCount}}</h4></caption>
+									<thead>
+										<tr>
+											<th>Name</th>
+											<th>Points</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr ng-repeat="assignment in assignData">
+											<td><a ui-sref="/assignments/{{assignment._id}}">{{assignment.name}}</a></td>
+											<td>{{assignment.maxPoints}}</td>
+										</tr>
+									</a>
+								</tbody>
+							</table>
+						</div>
+						<div class="col-lg-6">
+							<div id="assignmentChart"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!--Create panel row-->
+		<!--<div class="row">
+			<div class="col-lg-4 panel panel-default">
+				<div class="panel-heading">Create Course</div>
+				<div class="panel-body">
+					<form id="courseEntryForm" role="form">
+						<div class="form-group">
+							<label for="courseName">Course Name</label>
+							<input type="text" class="form-control" name="courseName" placeholder="Enter course name" required>
+						</div>
+						<div class="form-group">
+							<label for="courseSemesterSelect">Semester</label>
+							<select class="form-control" name="courseSemesterSelect">
+								<option>Spring 2015</option>
+								<option>Fall 2014</option>
+								<option>Summer 2014</option>
+								<option>Spring 2014</option>
+								<option>Fall 2013</option>
+							</select>
+						</div>
+						<div class="accordion" id="courseEntryAccordion">
+							<div class="accordion-group">
+								<div class="accordion-heading">
+									<a class="accordion-toggle" data-toggle="collapse" data-parent="courseEntryAccordion" href="#courseCollapse">
+										Details
+									</a>
+								</div>
+								<div id="courseCollapse" class="accordion-body collapse">
+									<div class="accordion-inner">
+										<div class="form-group">
+											<label for="courseNumber">Course Number</label>
+											<input type="text" class="form-control" name="courseNumber" placeholder="Enter course number" required>
+										</div>
+										<div class="form-group">
+											<label for="courseCreditSelect">Credit Hours</label>
+											<select class="form-control" name="courseCreditSelect">
+												<option></option>
+												<option>1</option>
+												<option>2</option>
+												<option>3</option>
+												<option>4</option>
+												<option>5</option>
+											</select>
+										</div>
+										<div class="form-group" id="courseStartDatePicker">
+											<label for="courseStartDate">Start Date</label>
+											<input type="text" class="form-control" name="courseStartDate" placeholder="Enter start date" required>
+										</div>
+										<div class="form-group" id="courseEndDatePicker">
+											<label for="courseEndDate">End Date</label>
+											<input type="text" class="form-control" name="courseEndDate" placeholder="Enter end date">
+										</div>
+										<div class="form-group" id="courseTimeInput">
+											<label for="courseTime">Course Time</label>
+											<input type="text" class="form-control" name="courseTime" placeholder="Enter course time">
+										</div>
+										<div class="form-group" id="roomNumberInput">
+											<label for="courseRoom">Room Number</label>
+											<input type="text" class="form-control" name="courseRoom" placeholder="Enter room number">
+										</div>
+										<div class="form-group" id="courseCommentInput">
+											<label for="courseComment">Comments</label>
+											<input type="text" class="form-control" name="courseComment" placeholder="Enter comments">
+										</div>
+										<div class="form-group row" id="courseSubmit">
+											<button type="submit" class="btn btn-theme col-lg-4 col-lg-offset-4" name="courseButton" placeholder="Create">Create</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div> 
+
+			<div class="col-lg-4 panel panel-default">
+				<div class="panel-heading">Create Student</div>
+				<div class="panel-body">
+					<form id="studentEntryForm" role="form">
+						<div class="form-group">
+							<label for="studentFirstName">First Name</label>
+							<input type="text" class="form-control" name="studentFirstName" placeholder="Enter first name" required>
+						</div>
+						<div class="form-group">
+							<label for="studentLastName">Last Name</label>
+							<input type="text" class="form-control" name="studentLastName" placeholder="Enter last name" required>
+						</div>
+
+						<div class="accordion" id="studentEntryAccordian">
+							<div class="accordion-group">
+								<div class="accordion-heading">
+									<a class="accordion-toggle" data-toggle="collapse" data-parent="studentEntryAccordion" href="#studentCollapse">
+										Details
+									</a>
+								</div>
+								<div id="studentCollapse" class="accordion-body collapse">
+									<div class="accordion-inner">
+										<div class="form-group">
+											<label for="studentCourseSelect">Course</label>
+											<select class="form-control" name="studentCourseSelect">
+												<option>CS 329</option>
+												<option>CS 330</option>
+												<option>CS 331</option>
+												<option>CS 332</option>
+												<option>CS 333</option>
+											</select>
+											<div class="form-group">
+												<label for="studentPhoneNumber">Phone Number</label>
+												<input type="text" class="form-control" name="studentPhoneNumber" placeholder="Enter phone number" required>
+											</div>
+											<div class="form-group" id="studentEmailInput">
+												<label for="studentEmail">Email</label>
+												<input type="text" class="form-control" name="studentEmail" placeholder="Enter email" required>
+											</div>
+											<div class="form-group" id="studentCommentInput">
+												<label for="studentComment">Comments</label>
+												<input type="text" class="form-control" name="studentComment" placeholder="Enter comments">
+											</div>
+											<div class="form-group row" id="studentSubmit">
+												<button type="submit" class="btn btn-theme col-lg-4 col-lg-offset-4" name="courseButton" placeholder="Create">Create</button>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>     
+
+			<div class="col-lg-4 panel panel-default">
+				<div class="panel-heading">Create Assignment</div>
+				<div class="panel-body">
+					<form id="assignmentEntryForm" role="form">
+						<div class="form-group">
+							<label for="assignmentName">Assignment Name</label>
+							<input type="text" class="form-control" name="assignmentName" placeholder="Enter assignment name" required>
+						</div>
+						<div class="form-group">
+							<label for="assignmentCourseSelect">Course Number</label>
+							<select class="form-control" name="assignmentCourseSelect">
+								<option>CS 329</option>
+								<option>CS 330</option>
+								<option>CS 331</option>
+								<option>CS 332</option>
+								<option>CS 333</option>
+							</select>
+						</div>                        
+						<div class="accordion" id="assignmentEntryAccordian">
+							<div class="accordion-group">
+								<div class="accordion-heading">
+									<a class="accordion-toggle" data-toggle="collapse" data-parent="assignmentEntryAccordion" href="#assignmentCollapse">
+										Details
+									</a>
+								</div>
+								<div id="assignmentCollapse" class="accordion-body collapse">
+									<div class="accordion-inner">
+										<div class="form-group" id="assignmentOpenDatePicker">
+											<label for="assignmentOpenDate">Open Date</label>
+											<input type="text" class="form-control" name="assignmentOpenDate" placeholder="Enter open date" required>
+										</div>
+										<div class="form-group" id="assignmentCloseDatePicker">
+											<label for="assignmentCloseDate">Close Date</label>
+											<input type="text" class="form-control" name="assignmentCloseDate" placeholder="Enter close date">
+										</div>
+
+										<div class="form-group">
+											<label for="assignmentDescription">Description</label>
+											<input type="text" class="form-control" name="assignmentDescription" placeholder="Enter description" required>
+										</div>
+										<div class="form-group">
+											<label for="assignmentTypeSelect">Assignment Type</label>
+											<select class="form-control" name="assignmentTypSelect">
+												<option>Quiz</option>
+												<option>Test</option>
+												<option>Homework</option>
+												<option>Assignment</option>
+												<option>Extra Credit</option>
+											</select>
+										</div>   
+										<div class="form-group" id="assignmentCommentInput">
+											<label for="assignmentComment">Comments</label>
+											<input type="text" class="form-control" name="assignmentComment" placeholder="Enter comments">
+										</div>
+										<div class="form-group row" id="assignmentSubmit">
+											<button type="submit" class="btn btn-theme col-lg-4 col-lg-offset-4" name="courseButton" placeholder="Create">Create</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- End welcome dashboard view -->     
+
+
+
+</div><!--/row-->
+</div><!--/parent div-->

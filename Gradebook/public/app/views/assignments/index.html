@@ -1,0 +1,45 @@
+<div class="col-lg-offset-1 col-lg-10">
+
+	<!--Header for view type-->
+	<div class="row">                
+		<div class="col-lg-6">
+			<h2>Current {{viewType}}</h2>
+			<hr/>
+		</div>
+	</div>
+	<!--End header-->
+
+	<!--Display courses-->
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Description</th>
+				<th>Points</th>
+				<th>Course</th>
+				<th>Comments</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="assignment in assignmentData">
+				<td>{{assignment.name}}</td>
+				<td>{{assignment.description}}</td>
+				<td>{{assignment.maxPoints}}</td>
+				<td>{{assignment.course.name}}
+				<td>
+					<ul ng-repeat="comment in assignment.comments">
+						<li>{{comment}}</li>
+					</ul>
+				</td>
+				<td>
+					<button type="button" class="btn btn-theme04" ng-click="remove(assignment._id)">Delete</button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<!--End course display-->
+	<div>
+		<a ui-sref="assignmentCreate"><button type="button" class="btn btn-theme">Create New</button></a>
+	</div>
+</div>

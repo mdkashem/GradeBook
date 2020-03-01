@@ -1,0 +1,45 @@
+<div class="col-lg-offset-1 col-lg-10">
+
+	<!--Header for view type-->
+	<div class="row">                
+		<div class="col-lg-6">
+			<h2>Current {{viewType}}</h2>
+			<hr/>
+		</div>
+	</div>
+	<!--End header-->
+
+	<!--Display courses-->
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>First Name</th>
+				<th>Last Number</th>
+				<th>Phone</th>
+				<th>Email</th>
+				<th>Comments</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="student in studentData">
+				<td>{{student.firstName}}</td>
+				<td>{{student.lastName}}</td>
+				<td>{{student.phoneNumber}}</td>
+				<td>{{student.email}}</td>
+				<td>
+					<ul ng-repeat="comment in student.comments">
+						<li>{{comment}}</li>
+					</ul>
+				</td>
+				<td>
+					<button type="button" class="btn btn-theme04" ng-click="remove(student._id)">Delete</button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<!--End course display-->
+	<div>
+		<a ui-sref="studentCreate"><button type="button" class="btn btn-theme">Create New</button></a>
+	</div>
+</div>
