@@ -15,7 +15,7 @@
     "mongodb": "^2.0.27",
     "mongoose": "^4.0.1",
     "morgan": "^1.5.2",
-    "restify": "^3.0.1"
+    "restify": "^4.1.0"
   },
   "devDependencies": {},
   "scripts": {
