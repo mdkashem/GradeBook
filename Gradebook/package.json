@@ -13,7 +13,7 @@
     "express-jwt": "^2.1.0",
     "method-override": "^2.3.2",
     "mongodb": "^2.0.27",
-    "mongoose": "^4.0.1",
+    "mongoose": "^4.13.21",
     "morgan": "^1.5.2",
     "restify": "^3.0.1"
   },
