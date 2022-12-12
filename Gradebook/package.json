@@ -9,7 +9,7 @@
     "assume": "^0.0.18",
     "bcrypt-nodejs": "^0.0.3",
     "body-parser": "^1.12.2",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "express-jwt": "^2.1.0",
     "method-override": "^2.3.2",
     "mongodb": "^2.0.27",
